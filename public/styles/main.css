@@ -1,11 +1,11 @@
 html {
   height: 100%;
   box-sizing: border-box;
-  background: url(../images/city.jpeg) no-repeat center center fixed;
+  background: url(../images/SLC.jpeg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;}
+  background-size: cover; }
 
 html * {
   font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
@@ -28,8 +28,7 @@ p {
   box-sizing: inherit; }
 
 body {
-  /*background-color: #F7FAFD;*/
-  background-color: rgba(76, 175, 80, 0.3);
+  background-color: rgba(70, 130, 180, 0.3);
   position: relative;
   padding-bottom: 6rem;
   margin: 0;
@@ -54,28 +53,14 @@ a:-webkit-any-link {
   color: white !important;
   background-color: #323436; }
 
-.btn-primary, .btn-primary:hover, .btn-primary:focus {
-  outline: none;
-  position: static;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 18px 60px;
-  float: none;
-  border: 0px solid #b39b20;
-  border-radius: 94px;
-  background-color: #43AA48;
-  box-shadow: 0 10px 20px 0 rgba(255, 221, 42, 0.6);
-  font-family: Lato, sans-serif;
-  color: #b38c12;
-  font-weight: 700;
-  letter-spacing: 1px;
-  transition: background-color 0.5s ease 0s, box-shadow 0.5s ease 0s, color 0.5s ease 0s, opacity 900ms, transform 900ms cubic-bezier(0.165, 0.84, 0.44, 1); }
-  .btn-primary:hover, .btn-primary:hover:hover, .btn-primary:focus:hover {
-    background-color: #f3d539; }
-
 .centered {
   margin: 0px auto; }
+
+.centered-both {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 .center-text {
   text-align: center; }
@@ -90,33 +75,6 @@ a:-webkit-any-link {
 
 .hidden {
   display: none !important; }
-
-.tiers-container {
-  margin-top: 50px;
-  max-width: 800px; }
-  .tiers-container #cost {
-    font-size: 50px;
-    font-weight: 500; }
-  .tiers-container #tier {
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 3.5px; }
-  .tiers-container .fa-usd {
-    font-size: 20px;
-    font-weight: 500; }
-
-.tier-container {
-  padding-left: 20px;
-  padding-right: 20px;
-  min-width: 250px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.09804) 0px 23px 40px 0px;
-  box-sizing: border-box;
-  border-radius: 4px; }
-  .tier-container:nth-child(2) {
-    margin-top: -20px;
-    background-color: #323436;
-    color: white; }
 
 .btn-white {
   background-color: white;
@@ -160,21 +118,23 @@ a:-webkit-any-link {
   .btn#free-trial:hover {
     background-color: #F7FAFD; }
 
+.card-header {
+  color: white;
+  font-size: 24px;
+  background-color: #0b76cc;
+  text-align: center;
+  margin: -21px -20px 15px -20px;
+  padding: 10px; }
+
 .form-container {
   background-color: white;
   padding: 20px;
-  max-width: 600px;
+  width: 600px;
+  margin-top: 50px;
   box-shadow: 0 3px 50px rgba(0, 0, 60, 0.1), 0 3px 25px rgba(0, 0, 60, 0.3);
   border-radius: 5px;
   text-align: center;
-  overflow: hidden;
-  transition: background-color 0.6s ease; }
-  .form-container:hover {
-    transform: translateY(-2px);
-    transition-duration: 0.15s;
-    transition-timing-function: ease;
-    transition: background-color 1s ease;
-    background-color: steelblue !important; }
+  overflow: hidden; }
 
 .form-container-section {
   padding: 20 3rem; }
