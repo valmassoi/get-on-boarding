@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as formActions from '../actions/form'
 
+import Form1 from './Forms/Form1'
+
 class Form extends Component {
   constructor(props) {
     super(props)
@@ -40,53 +42,7 @@ class Form extends Component {
       <div class={`form-container centered ${isBadInput}`}>
         <form onSubmit={(e) => this.onSubmit(e)}>
          <div class="card-header">Title of Form {stepNumber}</div>
-            <fieldset class="form-group" style={{ width: '300px', float: 'left' }}>
-             <label>Version</label>
-             <input class="form-control" placeholder="v2.2.2" />
-            </fieldset>
-            <fieldset class="form-group" style={{ width: '300px', float: 'left' }}>
-             <label>Build</label>
-             <input class="form-control" placeholder="282" />
-            </fieldset>
-            <fieldset class="form-group">
-             <label>Production</label>
-             <br />
-             <input value="true" type="radio" /> True
-             &nbsp;&nbsp;&nbsp;&nbsp;
-             <input value="false" type="radio" /> False
-            </fieldset>
-            <fieldset class="form-group">
-             <label>Beta</label>
-             <br />
-             <input value="true" type="radio" /> True
-             &nbsp;&nbsp;&nbsp;&nbsp;
-             <input value="false" type="radio" /> False
-            </fieldset>
-            <fieldset class="form-group">
-             <label>RC</label>
-             <br />
-             <input value="true" type="radio" /> True
-             &nbsp;&nbsp;&nbsp;&nbsp;
-             <input value="false" type="radio" /> False
-            </fieldset>
-            <fieldset class="form-group">
-             <label>Change Log</label>
-             <input class="form-control" placeholder="Some cool new stuff" />
-            </fieldset>
-            <fieldset class="form-group">
-             <label>Note</label>
-             <input class="form-control" placeholder="Test some new function to see if it works" />
-            </fieldset>
-            <fieldset class="form-group">
-             <label>User access</label>
-             <br />
-             <select>
-               <option>asdffdas</option>
-               <option>asfd</option>
-               <option>asdfasdfasdfasd</option>
-               <option>All</option>
-             </select>
-            </fieldset>
+            {stepNumber === 1 ? <Form1 /> : `FORM ${stepNumber}`}
           <div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>
           <button action="submit" class="btn btn-primary pull-right">Next</button>
         </form>
