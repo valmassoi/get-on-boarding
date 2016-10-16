@@ -21,10 +21,11 @@ class Form extends Component {
 
   render() {
     const { isBadInput } = this.state
+    const { stepNumber } = this.props
     return (
       <div class={`form-container centered ${isBadInput}`}>
         <form onSubmit={(e) => this.onSubmit(e)}>
-         <div class="card-header">Title of Page 1</div>
+         <div class="card-header">Title of Page {stepNumber}</div>
             <fieldset class="form-group" style={{ width: '300px', float: 'left' }}>
              <label>Version</label>
              <input class="form-control" placeholder="v2.2.2" />
