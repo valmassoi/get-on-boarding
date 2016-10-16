@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as formActions from '../actions/form'
 
 class Form extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       isBadInput: '',
     }
@@ -10,8 +12,20 @@ class Form extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    console.log('handle submit')
-    this.badAnimation()
+    const step = this.props.stepNumber + 1
+    if (true && step < 7) {
+      this.props.setStep(step)
+    } else {
+      this.badAnimation()
+    }
+  }
+
+  goBack() {
+    const step = this.props.stepNumber - 1
+    if (step > 0)
+      this.props.setStep(step)
+    else
+      this.badAnimation()
   }
 
   badAnimation() {
@@ -25,7 +39,7 @@ class Form extends Component {
     return (
       <div class={`form-container centered ${isBadInput}`}>
         <form onSubmit={(e) => this.onSubmit(e)}>
-         <div class="card-header">Title of Page {stepNumber}</div>
+         <div class="card-header">Title of Form {stepNumber}</div>
             <fieldset class="form-group" style={{ width: '300px', float: 'left' }}>
              <label>Version</label>
              <input class="form-control" placeholder="v2.2.2" />
@@ -73,12 +87,11 @@ class Form extends Component {
                <option>All</option>
              </select>
             </fieldset>
-          <button class="btn btn-default pull-left">Back</button>
+          <div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>
           <button action="submit" class="btn btn-primary pull-right">Next</button>
         </form>
       </div>
     )
   }
 }
-
-export default Form
+export default connect(null, formActions)(Form)

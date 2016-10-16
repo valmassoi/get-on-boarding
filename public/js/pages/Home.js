@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
+import * as formActions from '../actions/form'
 
 import Form from '../components/Form'
 import CompletionBar from '../components/CompletionBar'
 
-export default class Home extends Component {
+class Home extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      stepNumber: 1,
+      // stepNumber: 1,
     }
   }
 
   componentWillMount() {
-
+    console.warn('home cwm')
+    // this.props.getStep()
   }
 
   render() {
-    const { stepNumber } = this.state
+    const { stepNumber } = this.props
     return (
       <div>
         <Form stepNumber={stepNumber} />
@@ -26,3 +30,11 @@ export default class Home extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    stepNumber: state.step.stepNumber,
+  }
+}
+
+export default connect(mapStateToProps, formActions)(Home)
