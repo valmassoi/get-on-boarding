@@ -43,16 +43,6 @@ a:-webkit-any-link {
 .kid-page {
   padding: 0px 50px; }
 
-.nav-pills#billing {
-  cursor: pointer;
-  margin-top: 25px;
-  display: flex;
-  justify-content: center; }
-
-.nav-pills > li.active > a {
-  color: white !important;
-  background-color: #323436; }
-
 .centered {
   margin: 0px auto; }
 

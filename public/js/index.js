@@ -9,6 +9,8 @@ import reduxThunk from 'redux-thunk'
 import reducers from './reducers/index'
 import routes from './routes'
 
+//TODO http://stackoverflow.com/questions/35305661/where-to-write-to-localstorage-in-a-redux-app
+
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
 const store = createStoreWithMiddleware(reducers)
 
