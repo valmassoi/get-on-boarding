@@ -17,7 +17,6 @@ class Home extends Component {
 
   componentWillMount() {
     console.warn('home cwm')
-    // this.props.getStep()
   }
 
   render() {
