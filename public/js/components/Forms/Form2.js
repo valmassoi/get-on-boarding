@@ -11,6 +11,9 @@ class Form2 extends Component {
   handleFormSubmit(formData) {
     this.props.submit(formData)// Parent
   }
+  handleFormBack(formData) {
+    this.props.goBack(formData)// Parent
+  }
 
   render() {
     const { handleSubmit, fields: { firstName, lastName, textArea, myInput, note, state1, state2, testFile } } = this.props
@@ -63,7 +66,7 @@ class Form2 extends Component {
           <input {...testFile} type="file" name="pic" accept="image/*" />
         </fieldset>
         </div>
-      <div class="btn btn-default pull-left" onClick={() => this.props.goBack()}>Back</div>
+      <div class="btn btn-default pull-left" onClick={handleSubmit(this.handleFormBack.bind(this))}>Back</div>
       <button action="submit" class="btn btn-primary pull-right">Next</button>
     </form>
 )

@@ -16,8 +16,7 @@ class Form extends Component {
   }
 
   onSubmit(formData) {
-    const step = this.props.stepNumber + 1
-    console.log('STEEPPP', step)
+    const step = this.props.stepNumber + 1// FIX
     if (true && step < 7) {
       this.props.saveForm(formData, step - 1)
       this.props.setStep(step)
@@ -29,10 +28,12 @@ class Form extends Component {
     }
   }
 
-  goBack() { // TODO save form here too
+  goBack(formData) {
     const step = this.props.stepNumber - 1
-    if (step > 0)
+    if (step > 0) {
+      this.props.saveForm(formData, step + 1)
       this.props.setStep(step)
+    }
     else
       this.badAnimation()
   }

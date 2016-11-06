@@ -11,6 +11,9 @@ class Form1 extends Component {
   handleFormSubmit(formData) {
     this.props.submit(formData)// Parent
   }
+  handleFormBack(formData) {
+    this.props.goBack(formData)// Parent
+  }
 
   render() {
     const { handleSubmit, fields: { version, build, changeLog, note, user, production, beta, rc } } = this.props
@@ -66,7 +69,7 @@ class Form1 extends Component {
            </select>
           </fieldset>
         </div>
-      <div class="btn btn-default pull-left" onClick={() => this.props.goBack()}>Back</div>
+      <div class="btn btn-default pull-left" onClick={handleSubmit(this.handleFormBack.bind(this))}>Back</div>
       <button action="submit" class="btn btn-primary pull-right">Next</button>
     </form>
 )
