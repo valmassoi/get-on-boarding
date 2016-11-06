@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
+import Dropzone from 'react-dropzone'
 
 class Form2 extends Component {
   constructor(props) {
@@ -13,6 +14,12 @@ class Form2 extends Component {
   }
   handleFormBack(formData) {
     this.props.goBack(formData)// Parent
+  }
+
+  onDrop(files) {
+    const file = files[0]
+    console.log('Received file: ', file.name)
+    this.props.fileUpload(file)
   }
 
   render() {
@@ -62,13 +69,21 @@ class Form2 extends Component {
           <input {...note} class="form-control" placeholder="Test some new function to see if it works" />
         </fieldset>
         <fieldset class="form-group" style={{ textAlign: 'left !important' }}>
-          <label>ID upload (image)</label>
-          <input {...testFile} type="file" name="pic" accept="image/*" />
+            <Dropzone onDrop={this.onDrop.bind(this)} multiple={false}>
+              <div>Drop file here, or click to select file to upload.</div>
+            </Dropzone>
+            {this.props.uploadedFile ?
+              <img width="200" src={this.props.uploadedFile.preview} />
+              : null
+            }
         </fieldset>
         </div>
-      <div class="btn btn-default pull-left" onClick={handleSubmit(this.handleFormBack.bind(this))}>Back</div>
-      <button action="submit" class="btn btn-primary pull-right">Next</button>
-    </form>
+        <div
+          class="btn btn-default pull-left"
+          onClick={handleSubmit(this.handleFormBack.bind(this))}
+        >Back</div>
+        <button action="submit" class="btn btn-primary pull-right">Next</button>
+      </form>
 )
   }
 }
@@ -77,6 +92,7 @@ function mapStateToProps(state) {
   return {
     errorMessage: '',
     initialValues: state.step.forms.form2,
+    uploadedFile: state.step.uploadedFile,
   } // state.form.error
 }
 // http://redux-form.com/5.3.3/#/examples/multirecord?_k=kcy5ns

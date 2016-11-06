@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-// import { reduxForm } from 'redux-form'
 import * as formActions from '../actions/form'
 
 import Form1 from './Forms/Form1'
@@ -37,7 +36,9 @@ class Form extends Component {
     else
       this.badAnimation()
   }
-
+  fileUpload(file) {
+    this.props.uploadedFile(file)
+  }
   badAnimation() {
     this.setState({ isBadInput: 'bad' })
     setTimeout(() => this.setState({ isBadInput: '' }), 1000)// HACK
@@ -58,7 +59,7 @@ class Form extends Component {
     const { stepNumber } = this.props
     const forms = [
       <Form1 submit={this.onSubmit.bind(this)} goBack={this.goBack.bind(this)} />,
-      <Form2 submit={this.onSubmit.bind(this)} goBack={this.goBack.bind(this)} />,
+      <Form2 submit={this.onSubmit.bind(this)} goBack={this.goBack.bind(this)} fileUpload={this.fileUpload.bind(this)} />,
       <div>`FORM ${stepNumber}`<div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>
       <button onClick={() => this.onSubmit()} class="btn btn-primary pull-right">Next</button></div>,
       <div>`FORM ${stepNumber}`<div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>
