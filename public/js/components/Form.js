@@ -78,7 +78,7 @@ class Form extends Component {
 }
 function mapStateToProps(state) {
   return {
-    allData: state.step.forms,
+    allData: { ...state.step.forms, uploadedFile: state.step.uploadedFile },
   }
 }
 export default connect(mapStateToProps, formActions)(Form)// `connect` puts `dispatch` in our props.
