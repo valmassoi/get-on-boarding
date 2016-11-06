@@ -24,6 +24,11 @@ class Form2 extends Component {
 
   render() {
     const { handleSubmit, fields: { firstName, lastName, textArea, myInput, note, state1, state2, testFile } } = this.props
+
+    const dropzoneStyle = {
+      padding: '15px',
+    }
+
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <div class="card-header">Title of Form 2</div>
@@ -69,11 +74,16 @@ class Form2 extends Component {
           <input {...note} class="form-control" placeholder="Test some new function to see if it works" />
         </fieldset>
         <fieldset class="form-group" style={{ textAlign: 'left !important' }}>
-            <Dropzone onDrop={this.onDrop.bind(this)} multiple={false}>
-              <div>Drop file here, or click to select file to upload.</div>
-            </Dropzone>
-            {this.props.uploadedFile ?
-              <img width="200" src={this.props.uploadedFile.preview} />
+            <div style={{ float: 'left' }}>
+              <Dropzone onDrop={this.onDrop.bind(this)} multiple={false}>
+                <div style={dropzoneStyle}>Drop file here, or click to select file to upload.</div>
+              </Dropzone>
+            </div>
+            {this.props.uploadedFile.preview ?
+              <div style={{ float: 'left', marginLeft: '15px' }}>
+                <img style={{ position: 'absolute' }} width="200" src={this.props.uploadedFile.preview} />
+                <h4 style={{ position: 'absolute', zIndex: '10', color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)', margin: '10px 0 0 10px', width: '180', padding: '10px' }}>{this.props.uploadedFile.name}</h4>
+              </div>
               : null
             }
         </fieldset>
