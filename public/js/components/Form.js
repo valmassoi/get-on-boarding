@@ -22,13 +22,14 @@ class Form extends Component {
       this.props.saveForm(formData, step - 1)
       this.props.setStep(step)
     } else if (true && step === 7) {
+      console.log('All DATA:', this.props.allData)
       browserHistory.push('/success')
     } else {
       this.badAnimation()
     }
   }
 
-  goBack() {
+  goBack() { // TODO save form here too
     const step = this.props.stepNumber - 1
     if (step > 0)
       this.props.setStep(step)
@@ -73,4 +74,9 @@ class Form extends Component {
     )
   }
 }
-export default connect(null, formActions)(Form)// `connect` puts `dispatch` in our props.
+function mapStateToProps(state) {
+  return {
+    allData: state.step.forms,
+  }
+}
+export default connect(mapStateToProps, formActions)(Form)// `connect` puts `dispatch` in our props.

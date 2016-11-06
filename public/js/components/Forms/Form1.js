@@ -72,7 +72,7 @@ class Form1 extends Component {
 )
   }
 }
-
+// http://redux-form.com/5.1.0/#/examples/simple?_k=a3hzz8
 function mapStateToProps(state) {
   return {
     errorMessage: '',
