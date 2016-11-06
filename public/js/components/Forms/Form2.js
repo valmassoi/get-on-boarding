@@ -71,7 +71,10 @@ class Form2 extends Component {
 }
 
 function mapStateToProps(state) {
-  return { errorMessage: '' } // state.form.error
+  return {
+    errorMessage: '',
+    initialValues: state.step.forms.form2,
+  } // state.form.error
 }
 // http://redux-form.com/5.3.3/#/examples/multirecord?_k=kcy5ns
 export default reduxForm({

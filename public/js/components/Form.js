@@ -17,9 +17,10 @@ class Form extends Component {
 
   onSubmit(formData) {
     const step = this.props.stepNumber + 1
+    console.log('STEEPPP', step)
     if (true && step < 7) {
+      this.props.saveForm(formData, step - 1)
       this.props.setStep(step)
-      this.props.saveForm(formData, step)
     } else if (true && step === 7) {
       browserHistory.push('/success')
     } else {
@@ -55,9 +56,7 @@ class Form extends Component {
     const { stepNumber } = this.props
     const forms = [
       <Form1 submit={this.onSubmit.bind(this)} goBack={this.goBack.bind(this)} />,
-      // <Form2 submit={this.onSubmit.bind(this)} goBack={this.goBack.bind(this)} />,
-      <div>`FORM ${stepNumber}`<div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>
-      <button onClick={() => this.onSubmit()} class="btn btn-primary pull-right">Next</button></div>,
+      <Form2 submit={this.onSubmit.bind(this)} goBack={this.goBack.bind(this)} />,
       <div>`FORM ${stepNumber}`<div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>
       <button onClick={() => this.onSubmit()} class="btn btn-primary pull-right">Next</button></div>,
       <div>`FORM ${stepNumber}`<div class="btn btn-default pull-left" onClick={() => this.goBack()}>Back</div>

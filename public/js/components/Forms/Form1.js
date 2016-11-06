@@ -13,7 +13,7 @@ class Form1 extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { version, build, note, user } } = this.props
+    const { handleSubmit, fields: { version, build, changeLog, note, user, production, beta, rc } } = this.props
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
       <div class="card-header">Title of Form 1</div>
@@ -29,31 +29,31 @@ class Form1 extends Component {
           <fieldset class="form-group">
             <label>Production</label>
             <br />
-            <input value="true" type="radio" /> True
+            <input {...production} value="true" type="radio" checked={production.value === 'true'} /> True
            &nbsp;&nbsp;&nbsp;&nbsp;
-           <input value="false" type="radio" /> False
+            <input {...production} value="false" type="radio" checked={production.value === 'false'} /> False
           </fieldset>
           <fieldset class="form-group">
-           <label>Beta</label>
-           <br />
-           <input value="true" type="radio" /> True
+            <label>Beta</label>
+            <br />
+            <input {...beta} value="true" type="radio" checked={beta.value === 'true'} /> True
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input {...beta} value="false" type="radio" checked={beta.value === 'false'} /> False
+          </fieldset>
+          <fieldset class="form-group">
+            <label>RC</label>
+            <br />
+            <input {...rc} value="true" type="radio" checked={rc.value === 'true'} /> True
            &nbsp;&nbsp;&nbsp;&nbsp;
-           <input value="false" type="radio" /> False
+            <input {...rc} value="false" type="radio" checked={rc.value === 'false'} /> False
           </fieldset>
           <fieldset class="form-group">
-           <label>RC</label>
-           <br />
-           <input value="true" type="radio" /> True
-           &nbsp;&nbsp;&nbsp;&nbsp;
-           <input value="false" type="radio" /> False
+            <label>Change Log</label>
+            <input {...changeLog} class="form-control" placeholder="Some cool new stuff" />
           </fieldset>
           <fieldset class="form-group">
-           <label>Change Log</label>
-           <input class="form-control" placeholder="Some cool new stuff" />
-          </fieldset>
-          <fieldset class="form-group">
-           <label>Note</label>
-           <input {...note} class="form-control" placeholder="Test some new function to see if it works" />
+            <label>Note</label>
+            <input {...note} class="form-control" placeholder="Test some new function to see if it works" />
           </fieldset>
           <fieldset class="form-group">
            <label>User access</label>
@@ -76,11 +76,11 @@ class Form1 extends Component {
 function mapStateToProps(state) {
   return {
     errorMessage: '',
-    initialValues: state.step.form1,
+    initialValues: state.step.forms.form1,
   } // state.form.error
 }
 // http://redux-form.com/5.3.3/#/examples/multirecord?_k=kcy5ns
 export default reduxForm({
   form: 'form1',
-  fields: ['version', 'build', 'note', 'user'],
+  fields: ['version', 'build', 'changeLog', 'note', 'user', 'production', 'beta', 'rc'],
 }, mapStateToProps, null)(Form1)
