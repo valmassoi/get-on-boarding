@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import * as formActions from '../actions/form'
 
 class CompletionBar extends Component {
 
@@ -23,10 +25,19 @@ class CompletionBar extends Component {
           </OverlayTrigger>
           &nbsp;{saveStatus}
         </span>
+        <div>
+          Go to step:&nbsp;
+          <a onClick={() => {this.props.setStep(1)}}>1</a>&nbsp;
+          <a onClick={() => {this.props.setStep(2)}}>2</a>&nbsp;
+          <a onClick={() => {this.props.setStep(3)}}>3</a>&nbsp;
+          <a onClick={() => {this.props.setStep(4)}}>4</a>&nbsp;
+          <a onClick={() => {this.props.setStep(5)}}>5</a>&nbsp;
+          <a onClick={() => {this.props.setStep(6)}}>6</a>&nbsp;
+        </div>
       </div>
     )
   }
 
 }
 
-export default CompletionBar
+export default connect(null, formActions)(CompletionBar)
