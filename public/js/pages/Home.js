@@ -22,7 +22,7 @@ class Home extends Component {
   render() {
     const { stepNumber } = this.props
     return (
-      <div>
+      <div class="kid-page">
         <Form stepNumber={stepNumber} />
         <CompletionBar stepNumber={stepNumber} />
       </div>
